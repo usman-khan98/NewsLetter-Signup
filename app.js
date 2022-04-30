@@ -10,9 +10,7 @@ mailChimp.setConfig({
 });
 
 app.use(express.static("public")); // to create public folder which is send automatically, that contains css file, images or bootstrap //
-app.use(express.urlencoded({
-  extended: true
-}));
+app.use(express.urlencoded({extended: true}));
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/signup.html");
@@ -96,6 +94,11 @@ app.post('/success', function (req, res) {
 app.listen(process.env.PORT || 3000, function() {
   console.log("Server running on port:3000");
 })
+
+// before using this command use below code
+// git commit -m "first commit"
+// git config user.email "insert github email here"
+// git config user.name "insert github real name here"
 
 // mailchimp api key
 // 8c3eddb2712175d65a24c9a91c65ad98-us14
