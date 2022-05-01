@@ -72,7 +72,7 @@ app.post("/", function(req, res) {
       res.sendFile(__dirname + "/success.html");
 
     } catch (err) {
-      console.log(err.status);
+      console.log(err);
       res.sendFile(__dirname + "/failure.html");
 
     }
@@ -100,9 +100,3 @@ app.listen(process.env.PORT || 3000, function() {
 // git commit -m "first commit"
 // git config user.email "insert github email here"
 // git config user.name "insert github real name here"
-
-// mailchimp api key
-// 8c3eddb2712175d65a24c9a91c65ad98-us14
-
-// mailchimp audience id
-// 75e2342e6d
