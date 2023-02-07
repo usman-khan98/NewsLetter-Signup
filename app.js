@@ -10,7 +10,7 @@ mailChimp.setConfig({
   server: "us14",
 });
 
-app.use(express.static("public")); // to create public folder which is send automatically, that contains css file, images or bootstrap //
+app.use(express.static("public")); 
 app.use(express.urlencoded({extended: true}));
 
 app.get("/", function(req, res) {
@@ -22,38 +22,7 @@ app.post("/", function(req, res) {
   const fname = req.body.Fname;
   const email = req.body.Email;
   console.log(fname + " " + lname + " :email: " + email);
-  //dr angela method outdated on mailchimp//
-
-  //     const data1 = {
-  //       members: [
-  //         {
-  //           email_address: email,
-  //           status: "subscribed",
-  //           merge_fields: {
-  //             FNAME: fname,
-  //             LNAME: lname
-  //           }
-  //         }
-  //       ]
-  //     }
-  //
-  //   var jsonData = JSON.stringify(data1);
-  //
-  //   const url = "https://us14.api.mailchimp.com/3.0/lists/75e2342e6d";
-  //
-  //   const options = {
-  //     method: "POST",
-  //     auth: "usman1:8c3eddb2712175d65a24c9a91c65ad98-us14"
-  //   };
-  //
-  //   const request = https.request(url, options, function(responce){
-  //     responce.on("data", function(data){
-  //       console.log(JSON.parse(data));
-  //     })
-  //    request.write(jsonData);
-  //    request.end();
-  //   })
-  // });
+ 
 
   const run = async () => {
     try {
@@ -68,7 +37,7 @@ app.post("/", function(req, res) {
         }]
       });
       console.log(response);
-      // unable to parse responce to find status code so used try catch to get same result//
+      
       res.sendFile(__dirname + "/success.html");
 
     } catch (err) {
@@ -81,7 +50,6 @@ app.post("/", function(req, res) {
   run();
 
 });
-//if more than 2 routes define your own route path, but dont give file name as route//
 
 app.post('/failure', function (req, res) {
   res.redirect('/');
@@ -90,13 +58,9 @@ app.post('/failure', function (req, res) {
 app.post('/success', function (req, res) {
   res.redirect('/');
 });
-//use heroku port automatically using process.env.HOST//
-//run simultaneously both on heroku and localhosht//
+
 app.listen(process.env.PORT || 3000, function() {
   console.log("Server running on port:3000");
 })
 
-// before using this command use below code
-// git commit -m "first commit"
-// git config user.email "insert github email here"
 // git config user.name "insert github real name here"
