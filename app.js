@@ -63,4 +63,3 @@ app.listen(process.env.PORT || 3000, function() {
   console.log("Server running on port:3000");
 })
 
-// git config user.name "insert github real name here"
